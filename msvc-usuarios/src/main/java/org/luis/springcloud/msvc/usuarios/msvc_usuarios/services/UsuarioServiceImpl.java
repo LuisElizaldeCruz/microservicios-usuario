@@ -16,7 +16,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     @Transactional(readOnly = true) //la libreria debe ser de springFramework
-    public List<Usuario> findAll() {
+    public List<Usuario> listar() {
         return (List<Usuario>) repository.findAll();
     }
 
