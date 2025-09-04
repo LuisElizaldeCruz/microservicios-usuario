@@ -37,9 +37,12 @@ public class UsuarioServiceImpl implements UsuarioService{
     public void eliminar(Long id) {
         repository.deleteById(id);
     }
+<<<<<<< HEAD
 
     @Override
     public Optional<Usuario> porEmail(String email) {
         return repository.findByEmail(email);
     }
+=======
+>>>>>>> origin/main
 }

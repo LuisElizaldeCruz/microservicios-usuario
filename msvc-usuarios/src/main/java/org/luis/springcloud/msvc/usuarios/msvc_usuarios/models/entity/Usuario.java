@@ -2,7 +2,10 @@ package org.luis.springcloud.msvc.usuarios.msvc_usuarios.models.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+<<<<<<< HEAD
 import jakarta.validation.constraints.NotBlank;
+=======
+>>>>>>> origin/main
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
@@ -13,7 +16,11 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+<<<<<<< HEAD
     @NotBlank
+=======
+    @NotEmpty
+>>>>>>> origin/main
     private String nombre;
 
     @NotEmpty
@@ -21,7 +28,11 @@ public class Usuario {
     @Column(unique = true)
     private String email;
 
+<<<<<<< HEAD
     @NotBlank
+=======
+    @NotEmpty
+>>>>>>> origin/main
     private String password;
 
     public Long getId() {
