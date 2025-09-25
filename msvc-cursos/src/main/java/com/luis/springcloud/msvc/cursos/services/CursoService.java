@@ -1,6 +1,6 @@
 package com.luis.springcloud.msvc.cursos.services;
 
-import com.luis.springcloud.msvc.cursos.entity.Curso;
+import com.luis.springcloud.msvc.cursos.models.entity.Curso;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,5 +1,6 @@
-package com.luis.springcloud.msvc.cursos.entity;
+package com.luis.springcloud.msvc.cursos.models.entity;
 
+import com.luis.springcloud.msvc.cursos.models.Usuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
@@ -17,11 +18,16 @@ public class Curso {
     @NotEmpty
     private String nombre;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,)//remueve huerfanos
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)//remueve huerfanos
+    @JoinColumn(name = "curso_id")
     private List<CursoUsuario> cursoUsuarios;
+
+    @Transient //este atributo no esta mapeado a la persistencia
+    private List<Usuario> usuarios;
 
     public Curso() {
         cursoUsuarios = new ArrayList<>();
+        usuarios = new ArrayList<>();
     }
 
     public Long getId() {
@@ -54,5 +60,13 @@ public class Curso {
 
     public void setCursoUsuarios(List<CursoUsuario> cursoUsuarios) {
         this.cursoUsuarios = cursoUsuarios;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 }
