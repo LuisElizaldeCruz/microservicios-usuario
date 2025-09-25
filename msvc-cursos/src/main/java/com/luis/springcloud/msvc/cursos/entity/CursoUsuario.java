@@ -1,0 +1,43 @@
+package com.luis.springcloud.msvc.cursos.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "curso_usuarios") //se encarga de registrar los id de los usuarios de un curso
+public class CursoUsuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "usuario_id", unique = true)
+    private Long usuarioId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Long usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
+    @Override //compara dos objetos si son iguales
+    public boolean equals(Object obj) {
+        if(this == obj){
+            return true;
+        }
+        if(!(obj instanceof CursoUsuario)){
+            return false;
+        }
+        CursoUsuario o = (CursoUsuario) obj;
+        return this.usuarioId != null && this.usuarioId.equals(o.usuarioId);
+    }
+}

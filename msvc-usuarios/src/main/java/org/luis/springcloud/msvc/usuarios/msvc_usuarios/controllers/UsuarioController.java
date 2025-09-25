@@ -35,14 +35,15 @@ public class UsuarioController {
     // @ResponseStatus(HttpStatus.CREATED)// 201 recurso creado
     public ResponseEntity<?> crear(@Valid @RequestBody Usuario usuario, BindingResult result) {
             //valida si primero hay algun correo
+        if (result.hasErrors()) {
+            return validar(result);
+        }
+
         if (!usuario.getEmail().isEmpty() && service.porEmail(usuario.getEmail()).isPresent()) {
             return ResponseEntity.badRequest()
                     .body(Collections.singletonMap("mensaje", "ya existe un usuario con ese correo electronico"));
         }
 
-        if (result.hasErrors()) {
-            return validar(result);
-        }
         return ResponseEntity.status(HttpStatus.CREATED).body(service.guardar(usuario));
     }
 
